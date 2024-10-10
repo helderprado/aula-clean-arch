@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from src.domain.student.student_entity import Student
+from domain.student.student_entity import Student
 from typing import List
 
 

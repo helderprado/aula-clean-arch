@@ -24,4 +24,4 @@ class ListTeachersUseCase(UseCaseInterface):
         for teacher in teachers:
             output.append(TeacherOutputDto(id=teacher.id, name=teacher.name))
 
-        return ListTeachersOutputDto(teachers=teachers)
+        return ListTeachersOutputDto(teachers=output)

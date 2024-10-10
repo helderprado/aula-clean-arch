@@ -4,7 +4,9 @@ from infrastructure.api.database import get_session
 from sqlalchemy.orm import Session
 
 from infrastructure.student.sqlalchemy.student_repository import StudentRepository
+from usecases.student.find_student.find_student_dto import FindStudentInputDto
 from usecases.student.find_student.find_student_usecase import FindStudentUseCase
+from usecases.student.list_students.list_students_dto import ListStudentsInputDto
 from usecases.student.list_students.list_students_usecase import ListStudentsUseCase
 from usecases.student.register_student.register_student_dto import (
     RegisterStudentInputDto,
@@ -40,7 +42,7 @@ def find_student(
     try:
         student_repository = StudentRepository(session=session)
         usecase = FindStudentUseCase(student_repository=student_repository)
-        Student = usecase.execute(student_id=student_id)
+        Student = usecase.execute(input=FindStudentInputDto(id=student_id))
         return Student
 
     except Exception as e:
@@ -55,7 +57,7 @@ def list_students(
     try:
         student_repository = StudentRepository(session=session)
         usecase = ListStudentsUseCase(student_repository=student_repository)
-        Students = usecase.execute()
+        Students = usecase.execute(input=ListStudentsInputDto())
         return Students
 
     except Exception as e:

@@ -8,7 +8,7 @@ from usecases.exam.add_question_to_exam.add_question_to_exam_dto import (
 )
 
 
-class RegisterExamUseCase(UseCaseInterface):
+class AddQuestionToExamUseCase(UseCaseInterface):
 
     exam_repository: ExamRepositoryInterface
 

@@ -2,6 +2,8 @@ from fastapi import APIRouter, HTTPException, Depends
 import traceback
 from infrastructure.api.database import get_session
 from sqlalchemy.orm import Session
+from usecases.teacher.find_teacher.find_teacher_dto import FindTeacherInputDto
+from usecases.teacher.list_teachers.list_teachers_dto import ListTeachersInputDto
 from usecases.teacher.register_teacher.register_teacher_dto import (
     RegisterTeacherInputDto,
 )
@@ -39,7 +41,7 @@ def find_teacher(
     try:
         teacher_repository = TeacherRepository(session=session)
         usecase = FindTeacherUseCase(teacher_repository=teacher_repository)
-        teacher = usecase.execute(teacher_id=teacher_id)
+        teacher = usecase.execute(input=FindTeacherInputDto(id=teacher_id))
         return teacher
 
     except Exception as e:
@@ -54,7 +56,7 @@ def list_teachers(
     try:
         teacher_repository = TeacherRepository(session=session)
         usecase = ListTeachersUseCase(teacher_repository=teacher_repository)
-        teachers = usecase.execute()
+        teachers = usecase.execute(input=ListTeachersInputDto())
         return teachers
 
     except Exception as e:

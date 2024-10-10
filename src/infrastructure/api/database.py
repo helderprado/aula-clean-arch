@@ -19,4 +19,5 @@ def get_session():
         db.close()
 
 
-Base.metadata.create_all(bind=engine)
+def create_tables():
+    Base.metadata.create_all(bind=engine)

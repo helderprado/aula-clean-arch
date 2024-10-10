@@ -8,13 +8,13 @@ from usecases.student.find_student.find_student_dto import (
 
 class FindStudentUseCase(UseCaseInterface):
 
-    Student_repository: StudentRepositoryInterface
+    student_repository: StudentRepositoryInterface
 
-    def __init__(self, Student_repository: StudentRepositoryInterface):
-        self.Student_repository = Student_repository
+    def __init__(self, student_repository: StudentRepositoryInterface):
+        self.student_repository = student_repository
 
     def execute(self, input: FindStudentInputDto) -> FindStudentOutputDto:
 
-        Student = self.Student_repository.find_student(id=input.id)
+        student = self.student_repository.find_student(id=input.id)
 
-        return FindStudentOutputDto(id=Student.id, name=Student.name)
+        return FindStudentOutputDto(id=student.id, name=student.name)
