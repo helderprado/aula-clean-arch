@@ -17,4 +17,4 @@ RUN pip3 install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Define o comando padrão a ser executado quando o container iniciar
-CMD ["uvicorn", "src.infra.api.main:app", "--host", "0.0.0.0", "--port", "8000". "--reload"]
+CMD ["uvicorn", "infra.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
